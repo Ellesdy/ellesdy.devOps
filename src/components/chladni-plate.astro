@@ -1,0 +1,179 @@
+---
+import ChladniPlateSimulator from "~/scripts/chladni";
+import p5 from "p5";
+import { onMount } from "svelte";
+
+---
+3
+<!DOCTYPE html>
+<html lang="en">
+  <div client:load={init}>
+    <head>
+      <title>Cymatics Simulator - Chladni</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="~/styles/q" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"
+      ></script>
+      <script type="module" src="../scripts/chladni.js" defer></script>
+      <script type="module" src="../scripts/initialize.js" on:load = ></script>
+    </head>
+    <body>
+      <div class="main-container">
+        <header>
+          <div id="settings">
+            <div id="collapsible-header" on:mousedown={startDrag}>Settings</div>
+            <form id="settings-form" class="hidden">
+              <p>Attempt at simulating cymatic patterns on a chladni plate.</p>
+              <p>
+                Sound wave equation: \[f(x) = a\sin(\pi nx) \sin(\pi my) +
+                b\sin(\pi mx) \sin(\pi ny)\]
+              </p>
+              <p>
+                Join the <a
+                  style="color:yellow;"
+                  href="https://discord.gg/worldtrade">Discord!</a
+                >
+              </p>
+              <fieldset>
+                <legend>frequency parameters:</legend>
+                <label for="mSlider">m</label>
+                <input
+                  name="mSlider"
+                  type="range"
+                  id="mSlider"
+                  min="1"
+                  max="5"
+                  step="1"
+                  value="1"
+                />
+                <br />
+                <label for="nSlider">n</label>
+                <input
+                  name="nSlider"
+                  type="range"
+                  id="nSlider"
+                  min="1"
+                  max="5"
+                  step="1"
+                  value="4"
+                />
+                <br />
+                <label for="pSlider">pSlider:</label>
+                <input
+                  type="range"
+                  min="1"
+                  max="3"
+                  value="2"
+                  step="0.1"
+                  id="pSlider"
+                />
+              </fieldset>
+              <br />
+              <legend for="Graphic Settings">Graphic Settings</legend>
+              <label for="vSlider">Velocity:</label>
+              <input
+                name="vSlider"
+                type="range"
+                id="vSlider"
+                min="0.01"
+                max="0.1"
+                step="0.01"
+                value="0.02"
+              />
+              <label for="numSlider">Density:</label>
+              <input
+                name="numSlider"
+                type="range"
+                id="numSlider"
+                min="2000"
+                max="20000"
+                step="2000"
+                value="20000"
+              />
+              <label for="bgColor">Background color:</label>
+              <input type="color" id="bgColor" value="#330000" />
+              <label for="audioFile">or upload your own audio file:</label>
+              <input type="file" id="audioInput" accept="audio/*" />
+              <button id="playButton">Play</button>
+              <button id="pauseButton">Pause</button>
+            </form>
+          </div>
+        </header>
+      </div>
+      <ChladniPlateSimulator />
+    </body>
+    <footer>
+      <a alt="More info" href="https://github.com/ellesdy" target="_blank"
+        ><i class="fa fa-github hover-opacity"></i></a
+      >
+    </footer>
+  </div>
+
+  <script>
+    const init() {
+    onMount(() => {
+
+      document.addEventListener('DOMContentLoaded', () => {
+  const collapsibleHeader = document.getElementById('collapsible-header');
+  const settingsForm = document.getElementById('settings-form'); // Changed from 'settings' to 'settings-form'
+  const sketchContainer = document.getElementById('sketch-container');
+  const bgColor = document.getElementById('bgColor');
+  const chladniCanvas = document.getElementById('chladniCanvas');
+
+  bgColor.addEventListener('input', (e) => {
+    const newColor = e.target.value;
+    document.body.style.backgroundColor = newColor;
+    chladniCanvas.style.backgroundColor = newColor;
+    sketch.particleColor = invertColor(newColor);
+    });
+
+  // Toggle the settings menu when the header is clicked
+  collapsibleHeader.addEventListener('click', () => {
+    settingsForm.classList.toggle('hidden');
+  });
+
+  // Initialize the Chladni plate simulation
+  new p5(sketch, document.getElementById('sketch-container'));
+});
+
+// variables to keep track of mouse position and box position
+let isDragging = false;
+let mouseX = 0;
+let mouseY = 0;
+let settingsX = 0;
+let settingsY = 0;
+
+// add event listeners for mouse events
+document.getElementById("collapsible-header").addEventListener("mousedown", startDrag);
+document.addEventListener("mouseup", stopDrag);
+document.addEventListener("mousemove", drag);
+
+// function to start dragging the box
+function startDrag(event) {
+  isDragging = true;
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+  settingsX = parseInt(document.getElementById("settings").style.left) || 0;
+  settingsY = parseInt(document.getElementById("settings").style.top) || 0;
+}
+
+// function to stop dragging the box
+function stopDrag() {
+  isDragging = false;
+}
+
+// function to drag the box
+function drag(event) {
+  if (isDragging) {
+    let deltaX = event.clientX - mouseX;
+    let deltaY = event.clientY - mouseY;
+    let newSettingsX = settingsX + deltaX;
+    let newSettingsY = settingsY + deltaY;
+    document.getElementById("settings").style.left = newSettingsX + "px";
+    document.getElementById("settings").style.top = newSettingsY + "px";
+  }
+}
+}
+</script>
+</html>

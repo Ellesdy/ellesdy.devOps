@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="4252.292"
+   height="1215.4862"
+   viewBox="0 0 4252.2922 1215.4861"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <linearGradient
+       id="linearGradient1345">
+      <stop
+         style="stop-color:#ea48a2;stop-opacity:1;"
+         offset="0"
+         id="stop1341" />
+      <stop
+         style="stop-color:#835df0;stop-opacity:1;"
+         offset="1"
+         id="stop1343" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient1345"
+       id="linearGradient2983"
+       x1="475.24283"
+       y1="711.88831"
+       x2="174.52928"
+       y2="615.84503"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="g8"
+     transform="translate(5534.5662,3032.496)">
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:Illusion3d;-inkscape-font-specification:'Illusion3d, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;inline-size:622.873;fill:url(#linearGradient2983);fill-opacity:1"
+       x="169.27307"
+       y="694.68805"
+       id="text2975"
+       transform="matrix(13.981908,0,0,11.788933,-7904.0164,-10208.09)"><tspan
+         x="169.27307"
+         y="694.68805"
+         id="tspan3500">ellesdy</tspan></text>
+  </g>
+</svg>

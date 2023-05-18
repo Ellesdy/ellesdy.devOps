@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="739.29492"
+   height="1082.5677"
+   viewBox="0 0 739.29492 1082.5677"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <linearGradient
+       id="linearGradient1345">
+      <stop
+         style="stop-color:#ea48a2;stop-opacity:1;"
+         offset="0"
+         id="stop1341" />
+      <stop
+         style="stop-color:#835df0;stop-opacity:1;"
+         offset="1"
+         id="stop1343" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter517">
+      <feColorMatrix
+         type="saturate"
+         values="1"
+         id="feColorMatrix515"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix969" />
+      <feFlood
+         id="feFlood971"
+         flood-opacity="0.658824"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite973"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur975"
+         in="composite1"
+         stdDeviation="1"
+         result="blur" />
+      <feOffset
+         id="feOffset977"
+         dx="6"
+         dy="6"
+         result="offset" />
+      <feComposite
+         in2="offset"
+         id="feComposite979"
+         in="fbSourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <linearGradient
+       xlink:href="#linearGradient1345"
+       id="linearGradient1347"
+       x1="215.70253"
+       y1="265.43182"
+       x2="86.049652"
+       y2="65.696304"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="g8"
+     transform="translate(-83.421826,-67.44837)">
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:Illusion3d;-inkscape-font-specification:'Illusion3d, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;inline-size:110.316;fill:url(#linearGradient1347);fill-opacity:1;filter:url(#filter517)"
+       x="94.173553"
+       y="253.61157"
+       id="text389"
+       transform="matrix(5.6293778,0,0,5.4256864,-386.19116,-298.50534)"><tspan
+         x="94.173553"
+         y="253.61157"
+         id="tspan2899">E</tspan></text>
+  </g>
+</svg>
