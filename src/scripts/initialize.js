@@ -1,7 +1,5 @@
-
 import sketch from './chladni.js';
 import p5 from 'p5';
-import { onMount } from svelte
 
 document.addEventListener('DOMContentLoaded', () => {
   const collapsibleHeader = document.getElementById('collapsible-header');
@@ -63,3 +61,5 @@ function drag(event) {
     document.getElementById("settings").style.top = newSettingsY + "px";
   }
 };
+
+export default chladniInit;

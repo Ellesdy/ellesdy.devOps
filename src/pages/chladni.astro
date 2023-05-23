@@ -1,13 +1,12 @@
 ---
-import "@fontsource/inter/variable.css";
-import "~/styles/chladni.css";
-import "~/styles/index.css";
-import ChladniPlate from "~/components/chladni-plate.astro";
+
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import Splash from "~/components/splash.astro";
-import Starfield from "~/components/starfield.astro";
+import ChladniSplash from "~/components/chladni-splash.astro";
 
+import "~/styles/index.css";
+import "~/styles/buttons.css";
+import "@fontsource/inter/variable.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -21,6 +20,9 @@ const description = "A demonstration of my skills as a software developer.";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="~/scripts/chladni.jsx"></script>
+    <script src="~/scripts/initialize.js"></script>
 
     <title>ellesdy.devOps</title>
     <meta name="description" content={description} />
@@ -33,12 +35,36 @@ const description = "A demonstration of my skills as a software developer.";
     <meta property="og:url" content={site} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
   </head>
-  <body>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
     <Header />
-    <Starfield />
-    <div>
-      <ChladniPlate />
+    <div class="space-y-24 px-8 py-32`">
+      <section><ChladniSplash /></section>
     </div>
+    <Footer />
   </body>
 </html>
