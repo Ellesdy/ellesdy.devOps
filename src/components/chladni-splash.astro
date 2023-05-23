@@ -1,0 +1,166 @@
+---
+import { Icon } from "astro-icon";
+import HeroImage from "~/components/hero-image.astro";
+import StarField from "~/scripts/chladni.jsx";
+
+---
+
+<!-- HTML -->
+  <section class="relative h-full bg-black">
+    <StarField client:only="react" />
+    <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
+      <HeroImage />
+    </div>
+    <div class="relative grid h-full place-items-center sm:grid-cols-2">
+      <h2
+        class="flex flex-col gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
+      >
+        <Icon name="logomark" class="h-24 text-white md:h-32" />
+        <div
+          class="gradient-text text-center font-extrabold tracking-tighter text-8xl"
+        >
+          Chladni Plate
+          <br /> Physics
+          <br /> Simulator
+          <body>
+            <div class="main-container">
+              <header>
+                <div id="settings">
+                  <h1 id="collapsible-header">
+                    Settings<h1>
+                      <form id="settings-form" class="hidden">
+                        <p>
+                          Attempt at simulating cymatic patterns on a chladni
+                          plate.
+                        </p>
+                        <p>
+                          Sound wave equation: \[f(x) = a\sin(\pi nx) \sin(\pi my)
+                          + b\sin(\pi mx) \sin(\pi ny)\]
+                        </p>
+                        <p>
+                          Join the <a
+                            style="color:yellow;"
+                            href="https://discord.gg/worldtrade">Discord!</a
+                          >
+                        </p>
+                        <fieldset>
+                          <legend>frequency parameters:</legend>
+                          <label for="mSlider">m</label>
+                          <input
+                            name="mSlider"
+                            type="range"
+                            id="mSlider"
+                            min="1"
+                            max="5"
+                            step="1"
+                            value="1"
+                          />
+                          <br />
+                          <label for="nSlider">n</label>
+                          <input
+                            name="nSlider"
+                            type="range"
+                            id="nSlider"
+                            min="1"
+                            max="5"
+                            step="1"
+                            value="4"
+                          />
+                          <br />
+                          <label for="pSlider">pSlider:</label>
+                          <input
+                            type="range"
+                            min="1"
+                            max="3"
+                            value="2"
+                            step="0.1"
+                            id="pSlider"
+                          />
+                        </fieldset>
+                        <br />
+                        <legend>Graphic Settings</legend>
+                        <label for="vSlider">Velocity:</label>
+                        <input
+                          name="vSlider"
+                          type="range"
+                          id="vSlider"
+                          min="0.01"
+                          max="0.1"
+                          step="0.01"
+                          value="0.02"
+                        />
+                        <label for="numSlider">Density:</label>
+                        <input
+                          name="numSlider"
+                          type="range"
+                          id="numSlider"
+                          min="2000"
+                          max="20000"
+                          step="2000"
+                          value="20000"
+                        />
+                        <label for="bgColor">Background color:</label>
+                        <input type="color" id="bgColor" value="#330000" />
+                        <label for="audioInput"
+                          >or upload your own audio file:</label
+                        >
+                        <input type="file" id="audioInput" accept="audio/*" />
+                        <button id="playButton">Play</button>
+                        <button id="pauseButton">Pause</button>
+                      </form>
+                    </h1>
+                  </h1>
+                  <main id="sketch-container"></main>
+                </div>
+              </header>
+
+              <div
+                id="astronaut"
+                class="w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+              >
+              </div>
+            </div>
+
+<!-- STYLE SHEETS -->
+        <noscript>
+          <style>
+            #splash-bg-fallback {
+              display: block;
+            }
+          </style>
+        </noscript>
+
+        <style>
+          @keyframes float {
+            0% {
+              transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+              transform: translate3d(0, 30px, 0);
+            }
+          }
+
+          #astronaut {
+            animation: float linear 2.5s infinite alternate;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            #astronaut {
+              @apply animate-none;
+            }
+
+            :global(#starfield) {
+              @apply hidden;
+            }
+
+            #splash-bg-fallback {
+              @apply block;
+            }
+          }
+        </style>
+      </body>
+    </div>
+  </h2>
+</div>
+</section>
