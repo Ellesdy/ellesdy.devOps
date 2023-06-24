@@ -12,8 +12,9 @@ export default defineConfig({
     serviceEntryPoint: "@astrojs/image/sharp"
   }), react(), svelte()],
   vite: {
-    ssr: {
-      external: ["svgo"]
-    }
-  }
+    plugins: [],
+    optimizeDeps: {
+      include: ['react', 'react-dom'],
+    },
+  },
 });
