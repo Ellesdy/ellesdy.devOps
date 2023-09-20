@@ -1,0 +1,48 @@
+---
+import { useState } from 'react';
+import ReactDOM from 'react-dom';
+---
+
+<div>
+  <h1>Chat</h1>
+  <div id="chat"></div>
+</div>
+
+<script lang="ts">
+  const Chat: React.FC = () => {
+    const [messages, setMessages] = useState<Array<{ text: string, sender: string }>>([]);
+    const [input, setInput] = useState<string>('');
+
+    async function sendMessage() {
+      setMessages(prevMessages => [...prevMessages, { text: input, sender: 'user' }]);
+      setInput('');
+
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: input })
+      });
+
+      const data = await response.json();
+
+      setMessages(prevMessages => [...prevMessages, { text: data.response, sender: 'bot' }]);
+    }
+
+    return (
+      <div>
+        {messages.map((message, index) => (
+          <p key={index}><strong>{message.sender}:</strong> {message.text}</p>
+        ))}
+        <input value={input} onChange={e => setInput(e.target.value)} />
+        <button onClick={sendMessage}>Send</button>
+      </div>
+    );
+  }
+
+  ReactDOM.render(
+    <Chat />, 
+    document.getElementById('chat')
+  );
+</script>
