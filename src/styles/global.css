@@ -1,4 +1,23 @@
-/* TODO: consider creating <Button> and <GradientText> components */
+#starfield {
+  position: fixed;  /* This will keep the starfield fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%;      /* Ensure it covers the full width */
+  height: 100%;     /* Ensure it covers the full height */
+  z-index: -1;      /* Keep it behind other content */
+}
+
+.gradient-text {
+  background-color: black; /* Add black background */
+  padding: 0.2em 0.4em; /* Add some padding around the text for better visibility */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  display: inline-block; /* Make it inline-block to wrap around the text */
+  @apply bg-clip-text text-transparent;
+  @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
+  z-index: 10;
+  position: relative;
+}
+
 a,
 .btn {
   @apply transition-colors duration-200;
@@ -6,7 +25,43 @@ a,
   @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-transparent;
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
+.subscribe-btn {
+  @apply btn;
+  @apply block mx-auto mt-5 px-5 py-2 bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500 text-white rounded;
+  @apply hover:bg-gradient-to-br hover:from-indigo-600 hover:via-fuchsia-600 hover:to-pink-600;
+}
+
+.subscription-plan {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;  /* Reduced padding to tighten up the blocks */
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.plan-title {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 8px;  /* Reduced margin to tighten up the blocks */
+}
+
+.subscription-plan ul {
+  list-style-type: none;
+  padding: 0;
+  color: #fff;
+}
+
+.subscribe-btn:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

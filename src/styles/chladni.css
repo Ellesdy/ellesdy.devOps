@@ -1,0 +1,22 @@
+#starfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Ensure it's above other content but below interactive elements like buttons or inputs */
+  overflow: hidden; /* Prevent any overflow from the canvas or other child elements */
+}
+
+#starfield-canvas {
+  display: block; /* Remove any default margins or padding */
+  width: 100%;
+  height: 100%;
+}
+
+input[type="file"] {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10; /* Ensure it's above the starfield */
+}

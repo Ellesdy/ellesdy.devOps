@@ -1,0 +1,49 @@
+---
+import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import coinImage from "~/assets/coin.png";
+import HeroImage from "~/components/hero-image.astro";
+import Starfield from "~/components/starfield.astro";
+import GitHubCorner from "./github-corner.astro";
+
+const widths = [450, 800];
+const sizes = "(min-width: 640px) 42vw, 67vw";
+---
+
+<section class="relative h-full flex items-center justify-center">
+  <Starfield />
+  <GitHubCorner />
+
+  <!-- Flex container for Splash Title and Subscription Plans -->
+  <div class="flex items-center justify-center space-x-10">
+    <!-- Splash Title and Icon/Image -->
+    <div class="text-center mt-10">
+      <Icon name="logomark" class="h-24 text-white md:h-32 mx-auto" />
+      <h2 class="gradient-text text-center font-extrabold tracking-tighter text-8xl mb-10">
+        RockIT
+        <br /> Uptime, All the time! 
+      </h2>
+    </div>
+
+    <!-- Subscription Plans -->
+    <div class="relative grid h-full place-items-center sm:grid-cols-3 space-x-4">
+      <!-- Subscription Plan 1: Basic -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Basic</h3>
+        <button class="subscribe-btn">Subscribe Now</button>
+      </div>
+
+      <!-- Subscription Plan 2: Premium -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Premium</h3>
+        <button class="subscribe-btn">Subscribe Now</button>
+      </div>
+
+      <!-- Subscription Plan 3: Ultimate -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Ultimate</h3>
+        <button class="subscribe-btn">Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</section>
